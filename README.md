@@ -1,6 +1,6 @@
 # Jogo-MMRR
 
-Trabalho avaliativo de algoritmo e programação de software 1º semestre de ciência da computação
+Trabalho avaliativo de algoritmo e programação de software 1º semestre em ciência da computação
 
 Alunos: Maíra Mél, Miguel Reis, Roberta Okada e Rhamon Valois
 
