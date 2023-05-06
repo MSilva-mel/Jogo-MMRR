@@ -12,16 +12,19 @@ let tbody = criaTag("tbody");
 
 tabela.appendChild(tbody);
 
-
+// Loop para criar as linhas
 for(let linha = 0; linha < 16; linha++) {
     let tr = criaTag("tr");
     tbody.appendChild(tr);
-    matriz[linha] = [];
+    // Loop para criar as células em cada linha
     for(let coluna = 0; coluna < 16; coluna++){
         let td = criaTag("td");
-            td.textContent = "%";
-            tr.appendChild(td);
-            matriz[linha][coluna] = "%";
+        if (linha === 15 || linha === 0 || coluna === 0 || coluna == 15) {
+            td.textContent = "*";
+          } else {
+            td.textContent = "";
+          }
+        tr.appendChild(td);
     }
 }
 
