@@ -1,18 +1,18 @@
-var posicaoX = 1; // posição X inicial do personagem
-var posicaoY = 1; // posição Y inicial do personagem
+var posicaoX = 1; 
+var posicaoY = 1; 
 
 document.onkeydown = function(event) {
   switch (event.keyCode) {
-    case 65: // A
+    case 65:
       esquerda();
       break;
-    case 87: // W
+    case 87:
       cima();
       break;
-    case 68: // D
+    case 68:
       direita();
       break;
-    case 83: // S
+    case 83:
       baixo();
       break;
   }
