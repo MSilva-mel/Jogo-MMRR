@@ -12,21 +12,19 @@ let tbody = criaTag("tbody");
 tabela.appendChild(tbody);
 
 // Loop para criar as linhas
-for(let linha = 0; linha < 16; linha++) {
+for(let linha = 0; linha < 17; linha++) {
     let tr = criaTag("tr");
     tbody.appendChild(tr);
     // Loop para criar as células em cada linha
-    for(let coluna = 0; coluna < 16; coluna++){
+    for(let coluna = 0; coluna < 17; coluna++){
         let td = criaTag("td");
-        if (linha === 15 || linha === 0 || coluna === 0 || coluna == 15) {
+        if ((linha === 16 || linha === 0 || coluna === 0 || coluna == 16) || (linha === 2 && coluna != 15) || (linha === 4 && coluna != 1) || (linha === 6 && coluna != 15) || (linha === 8 && coluna != 1) || (linha === 10 && coluna != 15) || (linha === 12 && coluna != 1) || (linha === 14 && coluna != 15)) {
             td.textContent = "*";
           } 
-          else if( linha === 1 && coluna === 1) {
+        else if( linha === 1 && coluna === 2) {
             td.textContent = "&" ;
         }
-          else {
-            td.textContent = "";
-          }
+          
         tr.appendChild(td);
     }
 }
@@ -91,18 +89,9 @@ function setPosition(x, y) {
   var cellNova = linhas[y].getElementsByTagName("td")[x];
   cellNova.classList.add("&");
 }
-
 function parede(x, y) {
   var tabela = document.getElementById("tabela");
   var linhas = tabela.getElementsByTagName("tr");
   var cell = linhas[y].getElementsByTagName("td")[x];
   return cell.innerHTML === "*";
-}
-
-function coletarChave() {
-  chaveColetada = true;
-  var tabela = document.getElementById("tabela");
-  var linhas = tabela.getElementsByTagName("tr");
-  var cell = linhas[posicaoChaveY].getElementsByTagName("td")[posicaoChaveX];
-  cell.innerHTML = "";
 }
