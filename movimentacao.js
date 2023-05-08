@@ -22,7 +22,11 @@ tabela.appendChild(tbody);
         let td = criaTag("td");
         cellId = "cell-" + linha + "-" + coluna; // cria o ID dinâmico para a célula
         td.setAttribute("id", cellId); // atribui o ID à célula
-        if ((linha === 16 || linha === 0 || coluna === 0 || coluna == 16) || (linha === 2 && coluna != 15) || (linha === 4 && coluna != 1) || (linha === 6 && coluna != 15) || (linha === 8 && coluna != 1) || (linha === 10 && coluna != 15) || (linha === 12 && coluna != 1) || (linha === 14 && coluna != 15)) {
+       if (linha === 1 && coluna === 0) {
+            matriz[linha][coluna] = "D";
+            td.textContent = matriz[linha][coluna];
+        }
+        else if ((linha === 16 || linha === 0 || coluna === 0 || coluna == 16) || (linha === 2 && coluna != 15) || (linha === 4 && coluna != 1) || (linha === 6 && coluna != 15) || (linha === 8 && coluna != 1) || (linha === 10 && coluna != 15) || (linha === 12 && coluna != 1) || (linha === 14 && coluna != 15)) {
             matriz[linha][coluna] = "*";
             td.textContent = matriz[linha][coluna];
           } 
