@@ -30,6 +30,10 @@ tabela.appendChild(tbody);
             matriz[linha][coluna] = "&";
             td.textContent = matriz[linha][coluna];
         }
+        else if (linha === 15 && coluna === 1) {
+            matriz[linha][coluna] = "@";
+            td.textContent = matriz[linha][coluna];
+        }
         else {
           matriz[linha][coluna] =  " ";
           td.textContent = matriz[linha][coluna];
@@ -38,11 +42,11 @@ tabela.appendChild(tbody);
     }
 }
 
-// Posição inicial do personagem
+// Posição inicial 
 let posicaoX = 1;
 let posicaoY = 1;
 
-// Movimentação do personagem
+// Movimentação 
 document.addEventListener("keydown", function(event){
   let tecla = event.keyCode;
   switch(tecla) {
@@ -97,12 +101,10 @@ function baixo() {
   }
 }
 
-// Função para verificar se a posição é uma parede
 function parede(x, y) {
   return matriz[y][x] === "*";
 }
 
-// Atualiza a tabela na página HTML
 function atualizaTabela() {
   let tabela = document.getElementById("tabela");
   let tbody = tabela.getElementsByTagName("tbody")[0];
