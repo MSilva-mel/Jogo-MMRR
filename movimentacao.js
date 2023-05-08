@@ -12,28 +12,39 @@ let tbody = criaTag("tbody");
 tabela.appendChild(tbody);
 
 // Loop para criar as linhas
-for(let linha = 0; linha < 17; linha++) {
+  for(let linha = 0; linha < 17; linha++) {
     let tr = criaTag("tr");
     tbody.appendChild(tr);
-    // Loop para criar as células em cada linha
+    matriz[linha] = [];  
+    // Loop para criar as células em cada linha.
     for(let coluna = 0; coluna < 17; coluna++){
         let td = criaTag("td");
+        let cellId = "cell-" + linha + "-" + coluna; // cria o ID dinâmico para a célula
+        td.setAttribute("id", cellId); // atribui o ID à célula
         if ((linha === 16 || linha === 0 || coluna === 0 || coluna == 16) || (linha === 2 && coluna != 15) || (linha === 4 && coluna != 1) || (linha === 6 && coluna != 15) || (linha === 8 && coluna != 1) || (linha === 10 && coluna != 15) || (linha === 12 && coluna != 1) || (linha === 14 && coluna != 15)) {
-            td.textContent = "*";
+            matriz[linha][coluna] = "*";
+            td.textContent = matriz[linha][coluna];
           } 
-        else if( linha === 1 && coluna === 2) {
-            td.textContent = "&" ;
+        else if( linha === 1 && coluna === 1) {
+            matriz[linha][coluna] = "&";
+            td.textContent = matriz[linha][coluna];
         }
-          
+        else {
+          matriz[linha][coluna] =  " ";
+          td.textContent = matriz[linha][coluna];
+          }
         tr.appendChild(td);
     }
 }
 
-var posicaoX = 1;
-var posicaoY = 1;
+// Posição inicial do personagem
+let posicaoX = 1;
+let posicaoY = 1;
 
-document.onkeydown = function(event) {
-  switch (event.keyCode) {
+// Movimentação do personagem
+document.addEventListener("keydown", function(event){
+  let tecla = event.keyCode;
+  switch(tecla) {
     case 65:
       esquerda();
       break;
@@ -47,51 +58,64 @@ document.onkeydown = function(event) {
       baixo();
       break;
   }
-};
+});
 
 function esquerda() {
   if (posicaoX > 0 && !parede(posicaoX - 1, posicaoY)) {
-    setPosition(posicaoX - 1, posicaoY);
+    matriz[posicaoY][posicaoX] = "";
+    posicaoX--;
+    matriz[posicaoY][posicaoX] = "&";
+    atualizaTabela();
   }
 }
 
 function cima() {
   if (posicaoY > 0 && !parede(posicaoX, posicaoY - 1)) {
-    setPosition(posicaoX, posicaoY - 1);
+    matriz[posicaoY][posicaoX] = "";
+    posicaoY--;
+    matriz[posicaoY][posicaoX] = "&";
+    atualizaTabela();
   }
 }
 
 function direita() {
   if (posicaoX < 15 && !parede(posicaoX + 1, posicaoY)) {
-    setPosition(posicaoX + 1, posicaoY);
+    matriz[posicaoY][posicaoX] = "";
+    posicaoX++;
+    matriz[posicaoY][posicaoX] = "&";
+    atualizaTabela();
   }
 }
 
 function baixo() {
   if (posicaoY < 15 && !parede(posicaoX, posicaoY + 1)) {
-    setPosition(posicaoX, posicaoY + 1);
+    matriz[posicaoY][posicaoX] = "";
+    posicaoY++;
+    matriz[posicaoY][posicaoX] = "&";
+    atualizaTabela();
   }
 }
 
-function setPosition(x, y) {
-  var tabela = document.getElementById("tabela");
-  var linhas = tabela.getElementsByTagName("tr");
-  
-  // Remove o elemento "&" da posição anterior
-  var cellAnterior = linhas[posicaoY].getElementsByTagName("td")[posicaoX];
-  cellAnterior.classList.remove("&");
-  
-  // Atualiza a posição do personagem
-  posicaoX = x;
-  posicaoY = y;
-  
-  // Adiciona o elemento "&" na nova posição
-  var cellNova = linhas[y].getElementsByTagName("td")[x];
-  cellNova.classList.add("&");
-}
+// Função para verificar se a posição é uma parede
 function parede(x, y) {
-  var tabela = document.getElementById("tabela");
-  var linhas = tabela.getElementsByTagName("tr");
-  var cell = linhas[y].getElementsByTagName("td")[x];
-  return cell.innerHTML === "*";
+  return matriz[y][x] === "*";
+}
+
+// Atualiza a tabela na página HTML
+function atualizaTabela() {
+  let tabela = document.getElementById("tabela");
+  let tbody = tabela.getElementsByTagName("tbody")[0];
+
+  for(let i = 0; i < 17; i++){
+    let tr = tbody.getElementsByTagName("tr")[i];
+    for(let j = 0; j < 17; j++){
+      let td = tr.getElementsByTagName("td")[j];
+      td.textContent = matriz[i][j];
+      if (matriz[i][j] === "&") {
+        td.classList.add("&");
+      } else {
+        td.classList.remove("&");
+      }
+    }
+  }
 }
