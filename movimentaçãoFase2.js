@@ -22,7 +22,7 @@ tabela.appendChild(tbody);
         let td = criaTag("td");
         cellId = "cell-" + linha + "-" + coluna; // cria o ID dinâmico para a célula
         td.setAttribute("id", cellId); // atribui o ID à célula
-        if (linha === 0 || coluna === 0 || linha === 31 || coluna === 31) {
+        if ((linha === 31 || linha === 0 || coluna === 0 || coluna == 31)) {
             matriz[linha][coluna] = "*";
             td.textContent = matriz[linha][coluna];
             if (linha === 1 && coluna === 0) {
@@ -34,11 +34,11 @@ tabela.appendChild(tbody);
             matriz[linha][coluna] = "&";
             td.textContent = matriz[linha][coluna];
         }
-        // tem q v onde coloca a chave
-        //else if(linha === 30 && coluna === 1) {
-        //  matriz[linha][coluna] = "@";
-        //  td.textContent = matriz[linha][coluna];
-        //}
+        else if(linha === 30 && coluna === 27) {
+          matriz[linha][coluna] = "@";
+          td.textContent = matriz[linha][coluna];
+          
+        }
         else {
           matriz[linha][coluna] =  " ";
           td.textContent = matriz[linha][coluna];
@@ -68,8 +68,8 @@ document.addEventListener("keydown", function(event){
       baixo();
       break;
     case 73: //I
-    if (posicaoY == 30 && posicaoX == 1) {
-      matriz[30][1] = "&";
+    if (posicaoY == 15 && posicaoX == 1) {
+      matriz[15][1] = "&";
       matriz[1][0] = "=";
       interagindoComAt = false;
       atualizaTabela();
@@ -91,6 +91,8 @@ function esquerda() {
 
 function cima() {
   if (posicaoY > 0 && !parede(posicaoX, posicaoY - 1)) {
+    // window.scrollTo(0, posicaoY*100);
+    window.scrollBy(0, -5*2);
     matriz[posicaoY][posicaoX] = " ";
     posicaoY--;
     matriz[posicaoY][posicaoX] = "&";
@@ -111,6 +113,8 @@ function direita() {
 
 function baixo() {
   if (posicaoY < 30 && !parede(posicaoX, posicaoY + 1)) {
+    // window.scrollTo(0, -posicaoY*100);
+    window.scrollBy(0, 5*2);
     matriz[posicaoY][posicaoX] = " ";
     posicaoY++;
     matriz[posicaoY][posicaoX] = "&";
@@ -132,7 +136,12 @@ function espinho(x,y) {
 function atualizaTabela() {
   let tabela = document.getElementById("tabela");
   let tbody = tabela.getElementsByTagName("tbody")[0];
-
+//   window.scrollTo(0, -posicaoY*300);
+// const pipoca = document.getElementsByClassName("&")
+// console.log(pipoca)
+// const cod = pipoca.getBoundingClientRect()
+// console.log(cod)
+ 
   for(let i = 0; i < 32; i++){
     let tr = tbody.getElementsByTagName("tr")[i];
     for(let j = 0; j < 32; j++){
@@ -140,8 +149,8 @@ function atualizaTabela() {
       td.textContent = matriz[i][j];
       if (matriz[i][j] === "&") {
         td.classList.add("&");
-        if((i != 30 || j != 1) && interagindoComAt){
-          matriz[30][1] = "@";
+        if((i != 30 || j != 27) && interagindoComAt){
+          matriz[30][27] = "@";
         }
       } else {
         td.classList.remove("&");
@@ -150,6 +159,9 @@ function atualizaTabela() {
   }
 }
 
+function fecharJanela(){
+  Window.close
+}
 function concluirFase() {
   if(matriz[posicaoY][posicaoX] === matriz[1][0]) {
     alert("Parabéns, você concluiu a fase 2!");
