@@ -81,9 +81,17 @@ document.addEventListener("keydown", function(event){
  
 function esquerda() {
   if (posicaoX > 0 && !parede(posicaoX - 1, posicaoY)) {
-    matriz[posicaoY][posicaoX] = " ";
-    posicaoX--;
-    matriz[posicaoY][posicaoX] = "&";
+    window.scrollBy(0, 5*2);
+    if (espinho(posicaoX - 1, posicaoY)) {
+      matriz[posicaoY][posicaoX] = " ";
+      posicaoX = 1;
+      posicaoY = 1;
+      matriz[posicaoY][posicaoX] = "&";
+    } else {
+      matriz[posicaoY][posicaoX] = " ";
+      posicaoX--;
+      matriz[posicaoY][posicaoX] = "&";
+    }
     atualizaTabela();
     concluirFase();
   }
@@ -91,41 +99,78 @@ function esquerda() {
 
 function cima() {
   if (posicaoY > 0 && !parede(posicaoX, posicaoY - 1)) {
-    matriz[posicaoY][posicaoX] = " ";
-    posicaoY--;
-    matriz[posicaoY][posicaoX] = "&";
+    window.scrollBy(0, 5*2);
+    if (espinho(posicaoX, posicaoY - 1)) {
+      matriz[posicaoY][posicaoX] = " ";
+      posicaoX = 1;
+      posicaoY = 1;
+      matriz[posicaoY][posicaoX] = "&";
+    } else {
+      matriz[posicaoY][posicaoX] = " ";
+      posicaoY--;
+      matriz[posicaoY][posicaoX] = "&";
+    }
     atualizaTabela();
     concluirFase();
   }
 }
 
 function direita() {
-  if (posicaoX < 60 && !parede(posicaoX + 1, posicaoY)) {
-    matriz[posicaoY][posicaoX] = " ";
-    posicaoX++;
-    matriz[posicaoY][posicaoX] = "&";
+  if (posicaoX < 30 && !parede(posicaoX + 1, posicaoY)) {
+    window.scrollBy(0, 5*2);
+    if (espinho(posicaoX + 1, posicaoY)) {
+      matriz[posicaoY][posicaoX] = " ";
+      posicaoX = 1;
+      posicaoY = 1;
+      matriz[posicaoY][posicaoX] = "&";
+    } else {
+      matriz[posicaoY][posicaoX] = " ";
+      posicaoX++;
+      matriz[posicaoY][posicaoX] = "&";
+    }
     atualizaTabela();
     concluirFase();
   }
 }
 
 function baixo() {
-  if (posicaoY < 60 && !parede(posicaoX, posicaoY + 1)) {
-    matriz[posicaoY][posicaoX] = " ";
-    posicaoY++;
-    matriz[posicaoY][posicaoX] = "&";
+  if (posicaoY < 30 && !parede(posicaoX, posicaoY + 1)) {
+    window.scrollBy(0, 5*2);
+    if (espinho(posicaoX, posicaoY + 1)) {
+      matriz[posicaoY][posicaoX] = " ";
+      posicaoX = 1;
+      posicaoY = 1;
+      matriz[posicaoY][posicaoX] = "&";
+    } else {
+      matriz[posicaoY][posicaoX] = " ";
+      posicaoY++;
+      matriz[posicaoY][posicaoX] = "&";
+    }
     atualizaTabela();
     concluirFase();
   }
 }
 
-// Função para verificar se a posição é uma parede.
 function parede(x, y) {
   return matriz[y][x] === "*" || matriz[y][x] === "D";
 }
 
-function espinho(x,y) {
-  return matriz[y][x] === "#";
+function espinho(x, y) {
+  if (matriz[y][x] === "#") {
+    matriz[posicaoY][posicaoX] = " ";
+    posicaoX = 1;
+    posicaoY = 1;
+    matriz[posicaoY][posicaoX] = "&";
+    vidas--;
+    alert(`Você perdeu uma vida no total de 3, agora você tem ${vidas} vidas`)
+
+    if (vidas === 0) {
+      alert("Você perdeu todas as vidas!");
+      voltarMenu();
+    }
+    return true;
+  }
+  return false;
 }
 
 // Atualiza a tabela na página HTML
@@ -156,10 +201,17 @@ function concluirFase() {
     var botao = document.createElement("button");
     botao.innerHTML = "Parabéns, você conseguiu, agora você voltou pra casa:) ";
     botao.addEventListener("click", function() {
-    window.open(".html", "_blank");
+    window.location.href = "TelaDeConclusão.html";
 });
 document.body.appendChild(botao);
   }
 }
+
+function voltarMenu() {
+  window.location.href = "TelaDeGaveOver.html";
+}
+
+
+
 
 
