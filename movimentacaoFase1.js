@@ -156,8 +156,12 @@ function concluirFase() {
     var botao = document.createElement("button");
     botao.innerHTML = "Parabéns, você avançou para a fase 2 :) ";
     botao.addEventListener("click", function() {
-    window.open("Fase2.html", "_blank");
+    window.location.href = "Fase2.html";
 });
 document.body.appendChild(botao);
   }
+}
+
+function fecharJanela(){
+  Window.close
 }
