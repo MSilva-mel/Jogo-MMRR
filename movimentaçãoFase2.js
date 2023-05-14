@@ -2,6 +2,9 @@ let matriz = [];
 let cellId;
 let interagindoComAt = true;
 let posicaoAtual;
+let vidas = 3
+let mostrandoO = true;
+
 
 //funcao para criar um elemento
 function criaTag(elemento) {
@@ -30,14 +33,25 @@ tabela.appendChild(tbody);
               td.textContent = matriz[linha][coluna];
           }
           } 
+        else if(linha === 30 && coluna === 27 || linha === 29 && coluna === 27 || linha === 28 && coluna === 27 || linha === 28 && coluna === 28 || linha === 28 && coluna === 29 || linha === 28 && coluna === 30) {
+            matriz[linha][coluna] = "#";
+            td.textContent = matriz[linha][coluna];
+        }
         else if( linha === 1 && coluna === 1) {
             matriz[linha][coluna] = "&";
             td.textContent = matriz[linha][coluna];
         }
-        else if(linha === 30 && coluna === 27) {
+        else if(linha === 30 && coluna === 30) {
           matriz[linha][coluna] = "@";
+          td.textContent = matriz[linha][coluna]; 
+        }
+        else if (linha === 5 && coluna === 2) {
+          if (mostrandoO) {
+            matriz[linha][coluna] = "O";
+          } else {
+            matriz[linha][coluna] = " ";
+          }
           td.textContent = matriz[linha][coluna];
-          
         }
         else {
           matriz[linha][coluna] =  " ";
@@ -67,23 +81,36 @@ document.addEventListener("keydown", function(event){
     case 83:
       baixo();
       break;
-    case 73: //I
-    if (posicaoY == 15 && posicaoX == 1) {
-      matriz[15][1] = "&";
+    case 73: // I
+    if (posicaoY == 30 && posicaoX == 30) {
+      matriz[30][30] = "&";
       matriz[1][0] = "=";
       interagindoComAt = false;
       atualizaTabela();
+    }if (posicaoY == 5 && posicaoX == 2) {
+      matriz[5][2] = "&";
+      matriz[28][30] = "=";
+      mostrandoO = false;
+      atualizaTabela();
     }
-      break;
+    break;     
   }
 });
 
  
 function esquerda() {
   if (posicaoX > 0 && !parede(posicaoX - 1, posicaoY)) {
-    matriz[posicaoY][posicaoX] = " ";
-    posicaoX--;
-    matriz[posicaoY][posicaoX] = "&";
+    window.scrollBy(0, 5*2);
+    if (espinho(posicaoX - 1, posicaoY)) {
+      matriz[posicaoY][posicaoX] = " ";
+      posicaoX = 1;
+      posicaoY = 1;
+      matriz[posicaoY][posicaoX] = "&";
+    } else {
+      matriz[posicaoY][posicaoX] = " ";
+      posicaoX--;
+      matriz[posicaoY][posicaoX] = "&";
+    }
     atualizaTabela();
     concluirFase();
   }
@@ -91,11 +118,17 @@ function esquerda() {
 
 function cima() {
   if (posicaoY > 0 && !parede(posicaoX, posicaoY - 1)) {
-    // window.scrollTo(0, posicaoY*100);
-    window.scrollBy(0, -5*2);
-    matriz[posicaoY][posicaoX] = " ";
-    posicaoY--;
-    matriz[posicaoY][posicaoX] = "&";
+    window.scrollBy(0, 5*2);
+    if (espinho(posicaoX, posicaoY - 1)) {
+      matriz[posicaoY][posicaoX] = " ";
+      posicaoX = 1;
+      posicaoY = 1;
+      matriz[posicaoY][posicaoX] = "&";
+    } else {
+      matriz[posicaoY][posicaoX] = " ";
+      posicaoY--;
+      matriz[posicaoY][posicaoX] = "&";
+    }
     atualizaTabela();
     concluirFase();
   }
@@ -103,9 +136,17 @@ function cima() {
 
 function direita() {
   if (posicaoX < 30 && !parede(posicaoX + 1, posicaoY)) {
-    matriz[posicaoY][posicaoX] = " ";
-    posicaoX++;
-    matriz[posicaoY][posicaoX] = "&";
+    window.scrollBy(0, 5*2);
+    if (espinho(posicaoX + 1, posicaoY)) {
+      matriz[posicaoY][posicaoX] = " ";
+      posicaoX = 1;
+      posicaoY = 1;
+      matriz[posicaoY][posicaoX] = "&";
+    } else {
+      matriz[posicaoY][posicaoX] = " ";
+      posicaoX++;
+      matriz[posicaoY][posicaoX] = "&";
+    }
     atualizaTabela();
     concluirFase();
   }
@@ -113,24 +154,46 @@ function direita() {
 
 function baixo() {
   if (posicaoY < 30 && !parede(posicaoX, posicaoY + 1)) {
-    // window.scrollTo(0, -posicaoY*100);
     window.scrollBy(0, 5*2);
-    matriz[posicaoY][posicaoX] = " ";
-    posicaoY++;
-    matriz[posicaoY][posicaoX] = "&";
+    if (espinho(posicaoX, posicaoY + 1)) {
+      matriz[posicaoY][posicaoX] = " ";
+      posicaoX = 1;
+      posicaoY = 1;
+      matriz[posicaoY][posicaoX] = "&";
+    } else {
+      matriz[posicaoY][posicaoX] = " ";
+      posicaoY++;
+      matriz[posicaoY][posicaoX] = "&";
+    }
     atualizaTabela();
     concluirFase();
   }
 }
+
 
 // Função para verificar se a posição é uma parede.
 function parede(x, y) {
   return matriz[y][x] === "*" || matriz[y][x] === "D";
 }
 
-function espinho(x,y) {
-  return matriz[y][x] === "#";
+function espinho(x, y) {
+  if (matriz[y][x] === "#") {
+    matriz[posicaoY][posicaoX] = " ";
+    posicaoX = 1;
+    posicaoY = 1;
+    matriz[posicaoY][posicaoX] = "&";
+    vidas--;
+    alert(`Você perdeu uma vida no total de 3, agora você tem ${vidas} vidas`)
+
+    if (vidas === 0) {
+      alert("Você perdeu todas as vidas!");
+      voltarMenu();
+    }
+    return true;
+  }
+  return false;
 }
+
 
 // Atualiza a tabela na página HTML
 function atualizaTabela() {
@@ -149,9 +212,15 @@ function atualizaTabela() {
       td.textContent = matriz[i][j];
       if (matriz[i][j] === "&") {
         td.classList.add("&");
-        if((i != 30 || j != 27) && interagindoComAt){
-          matriz[30][27] = "@";
-        }
+        if((i != 30 || j != 30) && interagindoComAt){
+          matriz[30][30] = "@";
+      }
+    }
+      if (matriz[i][j] === "&") {
+        td.classList.add("&");
+        if((i != 5 || j != 1) && mostrandoO){
+          matriz[5][2] = "O";
+      }
       } else {
         td.classList.remove("&");
       }
@@ -159,19 +228,23 @@ function atualizaTabela() {
   }
 }
 
-function fecharJanela(){
-  Window.close
-}
+
 function concluirFase() {
   if(matriz[posicaoY][posicaoX] === matriz[1][0]) {
     alert("Parabéns, você concluiu a fase 2!");
     var botao = document.createElement("button");
     botao.innerHTML = "Parabéns, você avançou para a fase 3 :) ";
     botao.addEventListener("click", function() {
-    window.open("Fase3.html", "_blank");
+    window.location.href = "Fase3.html";
 });
 document.body.appendChild(botao);
   }
 }
+
+function voltarMenu() {
+  window.location.href = "TelaDeGaveOver.html";
+}
+
+
 
 
