@@ -242,7 +242,7 @@ document.body.appendChild(botao);
 }
 
 function voltarMenu() {
-  window.location.href = "TelaDeGaveOver.html";
+  window.location.href = "TelaDeGameOver.html";
 }
 
 
