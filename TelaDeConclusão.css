@@ -27,7 +27,6 @@ button{
     width: 100px;
     border: 2px;
     align-items: center;
-    cursor: pointer;
     transition: 0.5s;
     text-decoration: none;
 }
