@@ -81,7 +81,6 @@ document.addEventListener("keydown", function(event){
  
 function esquerda() {
   if (posicaoX > 0 && !parede(posicaoX - 1, posicaoY)) {
-    window.scrollBy(0, 5*2);
     if (espinho(posicaoX - 1, posicaoY)) {
       matriz[posicaoY][posicaoX] = " ";
       posicaoX = 1;
@@ -99,7 +98,7 @@ function esquerda() {
 
 function cima() {
   if (posicaoY > 0 && !parede(posicaoX, posicaoY - 1)) {
-    window.scrollBy(0, 5*2);
+    window.scrollBy(0, -5*2);
     if (espinho(posicaoX, posicaoY - 1)) {
       matriz[posicaoY][posicaoX] = " ";
       posicaoX = 1;
@@ -116,8 +115,7 @@ function cima() {
 }
 
 function direita() {
-  if (posicaoX < 30 && !parede(posicaoX + 1, posicaoY)) {
-    window.scrollBy(0, 5*2);
+  if (posicaoX < 60 && !parede(posicaoX + 1, posicaoY)) {
     if (espinho(posicaoX + 1, posicaoY)) {
       matriz[posicaoY][posicaoX] = " ";
       posicaoX = 1;
@@ -134,7 +132,7 @@ function direita() {
 }
 
 function baixo() {
-  if (posicaoY < 30 && !parede(posicaoX, posicaoY + 1)) {
+  if (posicaoY < 60 && !parede(posicaoX, posicaoY + 1)) {
     window.scrollBy(0, 5*2);
     if (espinho(posicaoX, posicaoY + 1)) {
       matriz[posicaoY][posicaoX] = " ";
@@ -210,8 +208,3 @@ document.body.appendChild(botao);
 function voltarMenu() {
   window.location.href = "TelaDeGaveOver.html";
 }
-
-
-
-
-
