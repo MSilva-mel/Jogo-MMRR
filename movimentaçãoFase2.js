@@ -233,7 +233,7 @@ function concluirFase() {
   if(matriz[posicaoY][posicaoX] === matriz[1][0]) {
     alert("Parabéns, você concluiu a fase 2!");
     var botao = document.createElement("button");
-    botao.innerHTML = "Parabéns, você avançou para a fase 3 :) ";
+    botao.innerHTML = "Parabéns, Clique aqui para a fase 3 :) ";
     botao.addEventListener("click", function() {
     window.location.href = "Fase3.html";
 });
