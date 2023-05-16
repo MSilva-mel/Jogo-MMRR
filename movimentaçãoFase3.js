@@ -4,6 +4,10 @@ let interagindoComAt = true;
 let teleportando = false;
 let teleportandoBack = false;
 let posicaoAtual;
+let boneco = "$";
+let vilaoPosX = 15;
+let vilaoPosY = 40;
+let direcaoVilao = 1; // Indica a direção do movimento do vilão
 
 //funcao para criar um elemento
 function criaTag(elemento) {
@@ -46,6 +50,10 @@ tabela.appendChild(tbody);
         }
         else if(linha === 60 && coluna === 20){
           matriz[linha][coluna] = "<";
+          td.textContent = matriz[linha][coluna];
+        }
+        else if(linha === 40 && coluna === 15){
+          matriz[linha][coluna] = boneco;
           td.textContent = matriz[linha][coluna];
         }
         else {
@@ -96,8 +104,7 @@ document.addEventListener("keydown", function(event){
 });
 
 function teleportar() {
-  matriz[posicaoY][posicaoX] = ">";
-  matriz[20][30] = " ";
+  matriz[20][30] = ">";
   matriz[60][20] = "&";
   posicaoY = 60;
   posicaoX = 20;
@@ -253,3 +260,14 @@ document.body.appendChild(botao);
 function voltarMenu() {
   window.location.href = "TelaDeGaveOver.html";
 }
+
+// function moverBoneco() {
+//   if(vilaoPosX === 1 || vilaoPosX === 60) {
+//     direcaoVilao *= -1;
+//   }
+//   vilaoPosX += direcaoVilao;
+//   matriz[vilaoPosY][vilaoPosX] = boneco;
+//   matriz[vilaoPosY][vilaoPosX - direcaoVilao] = " ";
+//   atualizaTabela();
+// }
+
