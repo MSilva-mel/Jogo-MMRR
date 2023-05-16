@@ -94,7 +94,7 @@ document.addEventListener("keydown", function(event){
       atualizaTabela();
     }if (posicaoY == 5 && posicaoX == 2) {
       matriz[5][2] = "&";
-      matriz[28][30] = "=";
+      matriz[28][30] = " ";
       mostrandoO = false;
       atualizaTabela();
     }
@@ -182,12 +182,13 @@ function parede(x, y) {
 function espinho(x, y) {
   if (matriz[y][x] === "#") {
     matriz[posicaoY][posicaoX] = " ";
+    matriz[28][30] = "#"
+    matriz[5][2] = "O"
     posicaoX = 1;
     posicaoY = 1;
     matriz[posicaoY][posicaoX] = "&";
     vidas--;
     alert(`Você perdeu uma vida no total de 3, agora você tem ${vidas} vidas`)
-
     if (vidas === 0) {
       alert("Você perdeu todas as vidas!");
       voltarMenu();
