@@ -59,6 +59,9 @@ display: flex;
 justify-content: center;
 align-items: center;
 }
+.container button{
+    margin-right: 10px;
+}
 
 #controle{
     
