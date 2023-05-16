@@ -2,6 +2,7 @@ let matriz = [];
 let cellId;
 let interagindoComAt = true;
 let teleportando = false;
+let teleportandoBack = false;
 let posicaoAtual;
 
 //funcao para criar um elemento
@@ -84,33 +85,36 @@ document.addEventListener("keydown", function(event){
       }
       if(posicaoY == 20 && posicaoX == 30){
         teleportar();
-        atualizaTabela();
         console.log('iha');
       }
-      if(posicaoY == 60 && posicaoX == 20){
+      else if(posicaoY == 60 && posicaoX == 20){
         teleportarBack();
-        atualizaTabela();
-        console.log('iha');
+        console.log('egua');
       }
       break;
   }
 });
 
-function teleportar(){
-    matriz[20][30] = " ";
-    matriz[60][20] = "&";
-    posicaoY = 60;
-    posicaoX = 20;
-    teleportando = true;
-  }
+function teleportar() {
+  matriz[posicaoY][posicaoX] = " ";
+  matriz[20][30] = " ";
+  matriz[60][20] = "&";
+  posicaoY = 60;
+  posicaoX = 20;
+  matriz[posicaoY][posicaoX] = "&";
+  teleportando = true;
+  atualizaTabela();
+}
 
 function teleportarBack() {
-    matriz[60][20] = " ";
-    matriz[20][30] = "&";
-    posicaoY = 20;
-    posicaoX = 30;
-    teleportando = true;
-  }
+  matriz[60][20] = " ";
+  matriz[20][30] = "&";
+  posicaoY = 20;
+  posicaoX = 30;
+  matriz[posicaoY][posicaoX] = "&";
+  teleportandoBack = true;
+  atualizaTabela();
+}
  
 function esquerda() {
   if (posicaoX > 0 && !parede(posicaoX - 1, posicaoY)) {
@@ -236,7 +240,7 @@ function atualizaTabela() {
 
 function concluirFase() {
   if(matriz[posicaoY][posicaoX] === matriz[1][0]) {
-    alert("Parabéns, você conclui o jogo");
+    alert("Parabéns, você conclui o jogo!");
     var botao = document.createElement("button");
     botao.innerHTML = "Parabéns, você conseguiu, agora você voltou pra casa:) ";
     botao.addEventListener("click", function() {
