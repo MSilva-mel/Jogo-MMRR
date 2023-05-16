@@ -163,5 +163,5 @@ document.body.appendChild(botao);
 }
 
 function fecharJanela(){
-  Window.close
+  window.close
 }
