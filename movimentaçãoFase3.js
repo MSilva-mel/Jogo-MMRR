@@ -1,6 +1,7 @@
 let matriz = [];
 let cellId;
 let interagindoComAt = true;
+let teleportando = false;
 let posicaoAtual;
 
 //funcao para criar um elemento
@@ -34,11 +35,18 @@ tabela.appendChild(tbody);
             matriz[linha][coluna] = "&";
             td.textContent = matriz[linha][coluna];
         }
-        // tem q v onde coloca a chave
-        //else if(linha === 60 && coluna === 1) {
-        //  matriz[linha][coluna] = "@";
-        //  td.textContent = matriz[linha][coluna];
-        //}
+        else if(linha === 60 && coluna === 1) {
+          matriz[linha][coluna] = "@";
+          td.textContent = matriz[linha][coluna];
+        }
+        else if(linha === 20 && coluna === 30){
+          matriz[linha][coluna] = ">";
+          td.textContent = matriz[linha][coluna];
+        }
+        else if(linha === 60 && coluna === 20){
+          matriz[linha][coluna] = "<";
+          td.textContent = matriz[linha][coluna];
+        }
         else {
           matriz[linha][coluna] =  " ";
           td.textContent = matriz[linha][coluna];
@@ -68,16 +76,41 @@ document.addEventListener("keydown", function(event){
       baixo();
       break;
     case 73: //I
-    if (posicaoY == 60 && posicaoX == 1) {
-      matriz[60][1] = "&";
-      matriz[1][0] = "=";
-      interagindoComAt = false;
-      atualizaTabela();
-    }
+      if (posicaoY == 60 && posicaoX == 1) {
+        matriz[60][1] = "&";
+        matriz[1][0] = "=";
+        interagindoComAt = false;
+        atualizaTabela();
+      }
+      if(posicaoY == 20 && posicaoX == 30){
+        teleportar();
+        atualizaTabela();
+        console.log('iha');
+      }
+      if(posicaoY == 60 && posicaoX == 20){
+        teleportarBack();
+        atualizaTabela();
+        console.log('iha');
+      }
       break;
   }
 });
 
+function teleportar(){
+    matriz[20][30] = " ";
+    matriz[60][20] = "&";
+    posicaoY = 60;
+    posicaoX = 20;
+    teleportando = true;
+  }
+
+function teleportarBack() {
+    matriz[60][20] = " ";
+    matriz[20][30] = "&";
+    posicaoY = 20;
+    posicaoX = 30;
+    teleportando = true;
+  }
  
 function esquerda() {
   if (posicaoX > 0 && !parede(posicaoX - 1, posicaoY)) {
@@ -185,6 +218,14 @@ function atualizaTabela() {
         td.classList.add("&");
         if((i != 60 || j != 1) && interagindoComAt){
           matriz[60][1] = "@";
+        }
+        if((i != 20 || j!= 30)){
+          matriz[20][30] = ">";
+          console.log('oi')
+        }
+        if((i != 60 || j!= 20)){
+          matriz[60][20] = "<";
+          console.log('oi')
         }
       } else {
         td.classList.remove("&");
