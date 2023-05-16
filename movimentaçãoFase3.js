@@ -96,7 +96,7 @@ document.addEventListener("keydown", function(event){
 });
 
 function teleportar() {
-  matriz[posicaoY][posicaoX] = " ";
+  matriz[posicaoY][posicaoX] = ">";
   matriz[20][30] = " ";
   matriz[60][20] = "&";
   posicaoY = 60;
@@ -107,7 +107,7 @@ function teleportar() {
 }
 
 function teleportarBack() {
-  matriz[60][20] = " ";
+  matriz[60][20] = "<";
   matriz[20][30] = "&";
   posicaoY = 20;
   posicaoX = 30;
