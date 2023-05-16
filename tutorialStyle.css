@@ -1,10 +1,10 @@
 body{
-    background-image:url(https://i.pinimg.com/originals/92/48/d7/9248d7ff5e2163efa648d0c67683d1b5.png);
+    background-image:url(https://64.media.tumblr.com/d8fa8f6c001373dd5b33af9b0ad63ddb/67288bf31fa7038e-59/s500x750/7193b4966bf1bca7609ed354bc646f52f34379c5.png);
     background-size: cover;
 }
 button{
-    background-color: #000000;
-    color:  #ffffff;
+    background-color: rgb(228, 219, 166);;
+    color:  rgb(114, 108, 75);
     border-radius: 10px;
     height: 40px;
     width: 70px;
@@ -13,9 +13,12 @@ button{
     cursor: pointer;
     transition: 0.5s;
     text-decoration: none;
+    top: 100%
 }
+
 a:link{
     text-decoration: none;
+    color: black;
 }
 
 button:hover{
@@ -23,32 +26,33 @@ button:hover{
 }
 h1{
     text-align: center;
-    color:black;
+    color:rgb(228, 219, 166);
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
 }
 h2{
+    color: rgb(228, 219, 166);
     text-align: center;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
 }
 
 
 .maior{
-    width: 600px;
+    width: 900px;
     height: max-content;
     align-items: center;
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 30%;
     transform: translate(-50%, -50%);
-    background-color: #ffffff;
-    opacity: 0.7;
+ 
+
 }
 p{
-    color: rgb(0, 0, 0);
+    color: rgb(228, 219, 166);;
     text-align: center;
 }
 .pargf{
-    color:black;
+    color:rgb(228, 219, 166);;
 }
 .container {
 display: flex;
@@ -57,7 +61,7 @@ align-items: center;
 }
 
 #controle{
-    background-color: #ffffff;
+    
     height: max-content;
     text-align: center  ;
     align-items: center;
