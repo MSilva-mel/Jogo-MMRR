@@ -4,7 +4,10 @@ let interagindoComAt = true;
 let posicaoAtual;
 let vidas = 3
 let mostrandoO = true;
-
+let vilaoPosX = 2;
+let vilaoPosY = 29;
+let direcaoVilao = 1;
+let boneco = "$";
 
 //funcao para criar um elemento
 function criaTag(elemento) {
@@ -58,6 +61,7 @@ tabela.appendChild(tbody);
           }
           td.textContent = matriz[linha][coluna];
         }
+        
         else {
           matriz[linha][coluna] =  " ";
           td.textContent = matriz[linha][coluna];
@@ -67,6 +71,7 @@ tabela.appendChild(tbody);
 }
 
 // Posição inicial do personagem
+//Y e X estão trocados
 let posicaoX = 1;
 let posicaoY = 1;
 
@@ -170,6 +175,7 @@ function baixo() {
     }
     atualizaTabela();
     concluirFase();
+
   }
 }
 
@@ -180,7 +186,26 @@ function parede(x, y) {
 }
 
 function espinho(x, y) {
-  if (matriz[y][x] === "#") {
+  if (matriz[y][x] === "#" || matriz[y][x] === "$") {
+    matriz[posicaoY][posicaoX] = " ";
+    matriz[28][30] = "#"
+    matriz[5][2] = "O"
+    posicaoX = 1;
+    posicaoY = 1;
+    matriz[posicaoY][posicaoX] = "&";
+    vidas--;
+    alert(`Você perdeu uma vida no total de 3, agora você tem ${vidas} vidas`)
+    if (vidas === 0) {
+      alert("Você perdeu todas as vidas!");
+      voltarMenu();
+    }
+    return true;
+  }
+  return false;
+}
+
+function bonecoMau(x, y){
+  if (matriz[y][x] === "$") {
     matriz[posicaoY][posicaoX] = " ";
     matriz[28][30] = "#"
     matriz[5][2] = "O"
@@ -203,12 +228,6 @@ function espinho(x, y) {
 function atualizaTabela() {
   let tabela = document.getElementById("tabela");
   let tbody = tabela.getElementsByTagName("tbody")[0];
-//   window.scrollTo(0, -posicaoY*300);
-// const pipoca = document.getElementsByClassName("&")
-// console.log(pipoca)
-// const cod = pipoca.getBoundingClientRect()
-// console.log(cod)
- 
   for(let i = 0; i < 32; i++){
     let tr = tbody.getElementsByTagName("tr")[i];
     for(let j = 0; j < 32; j++){
@@ -248,3 +267,20 @@ document.body.appendChild(botao);
 function voltarMenu() {
   window.location.href = "TelaDeGameOver.html";
 }
+
+function moverBoneco() {
+  if(vilaoPosX === 1 || vilaoPosX === 13) {
+    direcaoVilao *= -1;
+  }
+  vilaoPosX += direcaoVilao;
+  bonecoMau(posicaoX, posicaoY);
+  matriz[vilaoPosY][vilaoPosX] = boneco;
+  matriz[vilaoPosY][vilaoPosX - direcaoVilao] = " ";
+  console.log("Olá");
+  atualizaTabela();
+}
+moverBoneco();
+
+document.addEventListener("DOMContentLoaded", function() {
+  setInterval(moverBoneco, 200); // Inicia o movimento do vilão a cada 500 milissegundos (0,5 segundos)
+});
