@@ -90,6 +90,11 @@ document.addEventListener("keydown", function(event){
     }if (posicaoY == 5 && posicaoX == 2) {
       matriz[5][2] = "&";
       matriz[28][30] = "=";
+      matriz[30][27] = "*"
+      matriz[29][27] = "*"
+      matriz[28][27] = "*"
+      matriz[28][28] = "*"
+      matriz[28][29] = "*"
       mostrandoO = false;
       atualizaTabela();
     }
