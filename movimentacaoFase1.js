@@ -154,14 +154,15 @@ function concluirFase() {
   if(matriz[posicaoY][posicaoX] === matriz[1][0]) {
     alert("Parabéns, você concluiu a fase 1!");
     var botao = document.createElement("button");
-    botao.innerHTML = "Parabéns! Clique aqui para ir para a fase 2 :) ";
+    botao.innerHTML = "Parabéns, clique aqui para a fase 2 :) ";
     botao.addEventListener("click", function() {
     window.location.href = "Fase2.html";
 });
 document.body.appendChild(botao);
   }
 }
-
 function fecharJanela(){
-  window.close
+  window.close()
 }
+
+
