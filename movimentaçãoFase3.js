@@ -135,7 +135,7 @@ function esquerda() {
 
 function cima() {
   if (posicaoY > 0 && !parede(posicaoX, posicaoY - 1)) {
-    window.scrollBy(0, -5*2);
+    window.scrollBy(0, -5*4);
     if (espinho(posicaoX, posicaoY - 1)) {
       matriz[posicaoY][posicaoX] = " ";
       posicaoX = 1;
@@ -170,7 +170,7 @@ function direita() {
 
 function baixo() {
   if (posicaoY < 60 && !parede(posicaoX, posicaoY + 1)) {
-    window.scrollBy(0, 5*2);
+    window.scrollBy(0, 5*4);
     if (espinho(posicaoX, posicaoY + 1)) {
       matriz[posicaoY][posicaoX] = " ";
       posicaoX = 1;
