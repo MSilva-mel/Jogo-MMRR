@@ -2,6 +2,10 @@ h2{
     text-align: center;
     margin-top: 50px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(228, 219, 166);
+}
+h3{
+    color: rgb(228, 219, 166);
 }
 
 body{
@@ -15,12 +19,12 @@ body{
 }
 a{
         text-decoration: none;
-        color: rgb(255, 254, 254);
+        color: rgb(0, 0, 0);
         cursor: pointer;
 }
 button{
-    color: whitesmoke;
-    background-color: black;
+    color: black;
+    background-color: rgb(228, 219, 166);
     cursor: pointer;
     border-radius: 10px;
     height: 40px;
@@ -28,5 +32,5 @@ button{
     border: 2px;
     align-items: center;
     transition: 0.5s;
-    text-decoration: none;
+    text-decoration: black;
 }
