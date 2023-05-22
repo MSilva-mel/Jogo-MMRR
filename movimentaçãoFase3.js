@@ -5,9 +5,9 @@ let teleportando = false;
 let teleportandoBack = false;
 let posicaoAtual;
 let boneco = "$";
-let vilaoPosX = 15;
-let vilaoPosY = 40;
-let direcaoVilao = 1; // Indica a direção do movimento do vilão
+let vilaoPosX = 1;
+let vilaoPosY = 17;
+let direcaoVilao = -1; // Indica a direção do movimento do vilão
 
 //funcao para criar um elemento
 function criaTag(elemento) {
@@ -28,28 +28,20 @@ tabela.appendChild(tbody);
         let td = criaTag("td");
         cellId = "cell-" + linha + "-" + coluna; // cria o ID dinâmico para a célula
         td.setAttribute("id", cellId); // atribui o ID à célula
-       if (linha === 0 || coluna === 0 || linha === 61 || coluna === 61 || (linha > 27 && linha < 33 && coluna === 28) || (linha > 27 && linha < 33 && coluna === 32) || (linha === 28 && coluna > 27 && coluna < 32) || (linha === 32 && coluna > 27 && coluna < 32) || (linha > 0 && linha < 6 && coluna === 52) || (linha > 0 && linha < 6 && coluna === 54) || (linha === 5 && coluna === 53) || (linha > 57 && linha < 61 && coluna === 58) || (linha === 58 && coluna > 58 && coluna < 61) || (linha === 49 && coluna < 7) || (coluna === 6 && linha > 49 && linha < 55) || (linha === 51 && coluna > 1 && coluna < 5) || (coluna === 4 && linha > 51 && linha < 55) || (coluna === 2 && linha > 51 && linha < 58) || (linha === 57 && coluna < 5) || (coluna === 4 && linha > 57) || (coluna === 1 && linha === 56)) {   
-            matriz[linha][coluna] = "*";
-            td.textContent = matriz[linha][coluna];
+        if (linha === 0 || coluna === 0 || linha === 61 || coluna === 61 || (linha > 27 && linha < 33 && coluna === 28) || (linha > 27 && linha < 33 && coluna === 32) || (linha === 28 && coluna > 27 && coluna < 32) || (linha === 32 && coluna > 27 && coluna < 32) || (linha > 0 && linha < 6 && coluna === 52) || (linha > 0 && linha < 6 && coluna === 54) || (linha === 5 && coluna === 53) || (linha > 57 && linha < 61 && coluna === 58) || (linha === 58 && coluna > 58 && coluna < 61) || (linha === 49 && coluna < 7) || (coluna === 6 && linha > 49 && linha < 55) || (linha === 51 && coluna > 1 && coluna < 5) || (coluna === 4 && linha > 51 && linha < 55) || (coluna === 2 && linha > 51 && linha < 58) || (linha === 57 && coluna < 5) || (coluna === 4 && linha > 57) || (coluna === 1 && linha === 56)) {   
+          matriz[linha][coluna] = "*";
+          td.textContent = matriz[linha][coluna];
             if (linha === 1 && coluna === 0) {
               matriz[linha][coluna] = "D";
               td.textContent = matriz[linha][coluna];
           }
           } 
-        else if( linha === 1 && coluna === 1) {
+        else if( linha === 30 && coluna === 30) {
             matriz[linha][coluna] = "&";
             td.textContent = matriz[linha][coluna];
         }
-        else if(linha === 60 && coluna === 1) {
+        else if(linha === 60 && coluna === 25) {
           matriz[linha][coluna] = "@";
-          td.textContent = matriz[linha][coluna];
-        }
-        else if(linha === 20 && coluna === 30){
-          matriz[linha][coluna] = ">";
-          td.textContent = matriz[linha][coluna];
-        }
-        else if(linha === 60 && coluna === 20){
-          matriz[linha][coluna] = "<";
           td.textContent = matriz[linha][coluna];
         }
         else if((linha === 2 && coluna < 25) || (linha === 1 && coluna  === 11) || (coluna === 24 && linha < 3) || (linha === 8 && coluna < 54) || (linha === 12 && coluna < 28) || (coluna === 4 && linha > 9 && linha < 12) || (coluna === 6 && linha > 8 && linha < 11) || (coluna === 8 && linha > 9 && linha < 12) || (coluna === 10 && linha > 8 && linha < 11) || (coluna === 12 && linha > 9 && linha < 12) || (coluna === 14 && linha > 8 && linha < 11) || (coluna === 16 && linha > 9 && linha < 12) || (coluna === 18 && linha > 8 && linha < 11) || (coluna === 20 && linha > 9 && linha < 16) || (coluna === 22 && linha > 8 && linha < 11) || (coluna === 24 && linha > 9 && linha < 12) || (coluna === 26 && linha > 8 && linha < 11) || (coluna === 28 && linha > 9 && linha < 12) || (coluna > 28 && coluna < 51 && linha === 10) || (linha === 18 && coluna < 24) || (linha === 20 && coluna > 1 && coluna < 22) || (coluna === 59 && linha < 14) || (coluna === 55 && linha < 3) || (coluna === 55 && linha > 5 && linha < 11) || (coluna === 55 && linha > 11 && linha < 17) || (coluna === 55 && linha > 17 && linha < 21) || (linha === 16 && coluna > 21 && coluna < 30) || (linha === 16 && coluna > 30) || (linha === 13 && coluna > 29 && coluna < 54) || (coluna === 53 && linha > 10 && linha < 13) || (coluna === 57 && linha > 1 && linha < 7) || (coluna === 57 && linha > 9 && linha < 13) || (coluna === 56 && linha === 2) || (coluna === 56 && linha === 10) || (coluna === 56 && linha === 12) || (linha === 8 && coluna > 56 && coluna < 59) || (linha === 14 && coluna > 56 && coluna < 60) || (linha === 20 && coluna > 55) || (coluna > 51 && coluna < 55 && linha === 18) || (coluna === 51 && linha === 19) || (linha === 18 && coluna > 45 && coluna < 51) || (coluna === 45 && linha === 19) || (coluna === 36 && linha === 19) || (linha === 18 && coluna > 36 && coluna < 45) || (linha === 18 && coluna > 30 && coluna < 36) || (linha === 18 && coluna > 20 && coluna < 30) || (coluna === 24 && linha > 18 && linha < 28) || (coluna === 2 && linha > 20 && linha < 28) || (linha === 29 && coluna < 12) || (linha === 22 && coluna > 3 && coluna < 24 ) || (linha === 24 && coluna > 2 && coluna < 23 ) || (linha === 27 && coluna > 2 && coluna < 24) || (linha === 26 && coluna === 5) || (linha === 25 && coluna === 7) || (linha === 26 && coluna === 9) || (linha === 25 && coluna === 11) || (linha === 26 && coluna === 13) || (linha === 25 && coluna === 15) || (linha === 26 && coluna === 17) || (linha === 25 && coluna === 19)
@@ -58,8 +50,16 @@ tabela.appendChild(tbody);
             matriz[linha][coluna] = "#";
             td.textContent = matriz[linha][coluna];
         }
-        else if(linha === 40 && coluna === 15){
+        else if(linha === 17 && coluna === 1){
           matriz[linha][coluna] = boneco;
+          td.textContent = matriz[linha][coluna];
+        }
+        else if(linha === 31 && coluna === 55){
+          matriz[linha][coluna] = "O";
+          td.textContent = matriz[linha][coluna];
+        }
+        else if((linha === 10 && coluna === 1) || (linha===26 && coluna === 3) || (linha === 37 && coluna === 1) || (linha === 59 && coluna === 2) || (linha  === 59 && coluna === 5) || (linha === 1 && coluna === 23) || (linha === 60 && coluna === 23) || (linha === 29 && coluna > 28 && coluna < 32) || (linha === 31 && coluna > 28 && coluna < 32) || (linha  === 30 && coluna === 29) || (linha  === 30 && coluna === 31) || (linha  === 27 && coluna === 47) || (linha  === 39 && coluna === 48) || (linha  === 1 && coluna === 53) || (linha  === 1 && coluna === 56) || (linha  === 1 && coluna === 60) || (linha  === 57 && coluna === 60) || (linha  === 60 && coluna === 60) || (linha  === 18 && coluna === 60) || (linha  === 32 && coluna === 56) || (linha  === 44 && coluna === 60) ){
+          matriz[linha][coluna] = "<";
           td.textContent = matriz[linha][coluna];
         }
         else {
@@ -71,8 +71,8 @@ tabela.appendChild(tbody);
 }
 
 // Posição inicial do personagem
-let posicaoX = 1;
-let posicaoY = 1;
+let posicaoX = 30;
+let posicaoY = 30;
 
 // Movimentação do personagem
 document.addEventListener("keydown", function(event){
@@ -91,50 +91,86 @@ document.addEventListener("keydown", function(event){
       baixo();
       break;
     case 73: //I
-      if (posicaoY == 60 && posicaoX == 1) {
-        matriz[60][1] = "&";
+      teleportar();
+      if (posicaoY == 60 && posicaoX == 25) {
+        matriz[60][25] = "&";
         matriz[1][0] = "=";
         interagindoComAt = false;
         atualizaTabela();
-      }
-      if(posicaoY == 20 && posicaoX == 30){
-        teleportar();
-        console.log('iha');
-      }
-      else if(posicaoY == 60 && posicaoX == 20){
-        teleportarBack();
-        console.log('egua');
       }
       break;
   }
 });
 
 function teleportar() {
-  matriz[20][30] = ">";
-  matriz[60][20] = "&";
-  posicaoY = 60;
-  posicaoX = 20;
-  matriz[posicaoY][posicaoX] = "&";
-  teleportando = true;
-  atualizaTabela();
+  if(posicaoY == 20 && posicaoX == 30){
+    matriz[37][1] = "&";
+    posicaoY = 37;
+    posicaoX = 1;
+    matriz[posicaoY][posicaoX] = "&";
+    teleportando = true;
+    atualizaTabela();
+  }
+  else if(posicaoY == 31 && posicaoX == 29){
+    matriz[32][56] = "&";
+    posicaoY = 32;
+    posicaoX = 56;
+    matriz[posicaoY][posicaoX] = "&";
+    teleportando = true;
+    atualizaTabela();
+    console.log('pipoca')
+  }
+  else if (posicaoY == 31 && posicaoX == 31){
+    matriz[18][60] = "&";
+    posicaoY = 18;
+    posicaoX = 60;
+    matriz[posicaoY][posicaoX] = "&";
+    teleportandoBack = true;
+    atualizaTabela();
+    console.log("baiacu")
+  }
+  else{
+    teleportarBack();
+  }
 }
 
 function teleportarBack() {
-  matriz[60][20] = "<";
-  matriz[20][30] = "&";
-  posicaoY = 20;
-  posicaoX = 30;
-  matriz[posicaoY][posicaoX] = "&";
-  teleportandoBack = true;
-  atualizaTabela();
+    if (posicaoY == 37 && posicaoX == 1){
+      matriz[20][30] = "&";
+      posicaoY = 20;
+      posicaoX = 30;
+      matriz[posicaoY][posicaoX] = "&";
+      teleportandoBack = true;
+      atualizaTabela();
+    }
+    else if (posicaoY == 32 && posicaoX == 56){
+      matriz[31][29] = "&";
+      posicaoY = 31;
+      posicaoX = 29;
+      matriz[posicaoY][posicaoX] = "&";
+      teleportandoBack = true;
+      atualizaTabela();
+      console.log("baiacu")
+    }
+    else if (posicaoY == 18 && posicaoX == 60){
+      matriz[31][31] = "&";
+      posicaoY = 31;
+      posicaoX = 31;
+      matriz[posicaoY][posicaoX] = "&";
+      teleportandoBack = true;
+      atualizaTabela();
+      console.log("baiacu")
+    }
+    
+    
 }
  
 function esquerda() {
   if (posicaoX > 0 && !parede(posicaoX - 1, posicaoY)) {
     if (espinho(posicaoX - 1, posicaoY)) {
       matriz[posicaoY][posicaoX] = " ";
-      posicaoX = 1;
-      posicaoY = 1;
+      posicaoX = 30;
+      posicaoY = 30;
       matriz[posicaoY][posicaoX] = "&";
     } else {
       matriz[posicaoY][posicaoX] = " ";
@@ -151,8 +187,8 @@ function cima() {
     window.scrollBy(0, -5*4);
     if (espinho(posicaoX, posicaoY - 1)) {
       matriz[posicaoY][posicaoX] = " ";
-      posicaoX = 1;
-      posicaoY = 1;
+      posicaoX = 30;
+      posicaoY = 30;
       matriz[posicaoY][posicaoX] = "&";
     } else {
       matriz[posicaoY][posicaoX] = " ";
@@ -168,8 +204,8 @@ function direita() {
   if (posicaoX < 60 && !parede(posicaoX + 1, posicaoY)) {
     if (espinho(posicaoX + 1, posicaoY)) {
       matriz[posicaoY][posicaoX] = " ";
-      posicaoX = 1;
-      posicaoY = 1;
+      posicaoX = 30;
+      posicaoY = 30;
       matriz[posicaoY][posicaoX] = "&";
     } else {
       matriz[posicaoY][posicaoX] = " ";
@@ -186,8 +222,8 @@ function baixo() {
     window.scrollBy(0, 5*4);
     if (espinho(posicaoX, posicaoY + 1)) {
       matriz[posicaoY][posicaoX] = " ";
-      posicaoX = 1;
-      posicaoY = 1;
+      posicaoX = 30;
+      posicaoY = 30;
       matriz[posicaoY][posicaoX] = "&";
     } else {
       matriz[posicaoY][posicaoX] = " ";
@@ -204,14 +240,33 @@ function parede(x, y) {
 }
 
 function espinho(x, y) {
-  if (matriz[y][x] === "#") {
+  if (matriz[y][x] === "#" || matriz[y][x] === boneco) {
     matriz[posicaoY][posicaoX] = " ";
-    posicaoX = 1;
-    posicaoY = 1;
+    posicaoX = 30;
+    posicaoY = 30;
     matriz[posicaoY][posicaoX] = "&";
     vidas--;
     alert(`Você perdeu uma vida no total de 3, agora você tem ${vidas} vidas`)
 
+    if (vidas === 0) {
+      alert("Você perdeu todas as vidas!");
+      voltarMenu();
+    }
+    return true;
+  }
+  return false;
+}
+
+function bonecoMau(x, y){
+  if (matriz[y][x] === boneco) {
+    matriz[posicaoY][posicaoX] = " ";
+    //matriz[28][30] = "#";
+    //matriz[5][2] = "O";
+    posicaoX = 30;
+    posicaoY = 30;
+    matriz[posicaoY][posicaoX] = "&";
+    vidas--;
+    alert(`Você perdeu uma vida no total de 3, agora você tem ${vidas} vidas`)
     if (vidas === 0) {
       alert("Você perdeu todas as vidas!");
       voltarMenu();
@@ -234,15 +289,25 @@ function atualizaTabela() {
       if (matriz[i][j] === "&") {
         td.classList.add("&");
         if((i != 60 || j != 1) && interagindoComAt){
-          matriz[60][1] = "@";
+          matriz[60][25] = "@";
         }
-        if((i != 20 || j!= 30)){
-          matriz[20][30] = ">";
-          console.log('oi')
+        // if((i != 20 || j!= 30)){
+        //   matriz[20][30] = "<";
+        // }
+        // if((i != 37 || j!= 1)){
+        //   matriz[37][1] = "<";
+        // }
+        if(i != 32 || j!= 56){
+          matriz[32][56] = "<";
         }
-        if((i != 60 || j!= 20)){
-          matriz[60][20] = "<";
-          console.log('oi')
+        if(i != 31 || j!= 29){
+          matriz[31][29] = "<";
+        }
+        if(i != 31 || j!= 31){
+          matriz[31][31] = "<";
+        }
+        if(i != 18 || j!= 60){
+          matriz[18][60] = "<";
         }
       } else {
         td.classList.remove("&");
@@ -267,12 +332,17 @@ function voltarMenu() {
   window.location.href = "TelaDeGaveOver.html";
 }
 
-// function moverBoneco() {
-//   if(vilaoPosX === 1 || vilaoPosX === 60) {
-//     direcaoVilao *= -1;
-//   }
-//   vilaoPosX += direcaoVilao;
-//   matriz[vilaoPosY][vilaoPosX] = boneco;
-//   matriz[vilaoPosY][vilaoPosX - direcaoVilao] = " ";
-//   atualizaTabela();
-// }
+  function moverBoneco() {
+    if(vilaoPosX === 60 || vilaoPosX === 1) {
+      direcaoVilao *= -1;
+    }
+    vilaoPosX += direcaoVilao;
+    matriz[vilaoPosY][vilaoPosX] = boneco;
+    matriz[vilaoPosY][vilaoPosX - direcaoVilao] = " ";
+    console.log('a')
+    atualizaTabela();
+  }
+
+document.addEventListener("DOMContentLoaded", function() {
+  setInterval(moverBoneco, 100); // Inicia o movimento do vilão a cada 500 milissegundos (0,5 segundos)
+});
