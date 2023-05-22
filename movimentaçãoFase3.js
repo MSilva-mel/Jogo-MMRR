@@ -51,10 +51,7 @@ tabela.appendChild(tbody);
             matriz[linha][coluna] = "#";
             td.textContent = matriz[linha][coluna];
         }
-        else if(linha === 17 && coluna === 1){
-          matriz[linha][coluna] = boneco;
-          td.textContent = matriz[linha][coluna];
-        }
+        
         else if(linha === 31 && coluna === 55){
           matriz[linha][coluna] = "O";
           td.textContent = matriz[linha][coluna];
@@ -106,6 +103,7 @@ document.addEventListener("keydown", function(event){
 function teleportar() {
   if(posicaoY == 20 && posicaoX == 30){
     matriz[37][1] = "&";
+    matriz[20][30] = "<";
     posicaoY = 37;
     posicaoX = 1;
     matriz[posicaoY][posicaoX] = "&";
@@ -114,6 +112,7 @@ function teleportar() {
   }
   else if(posicaoY == 31 && posicaoX == 29){
     matriz[32][56] = "&";
+    matriz[31][29] = "<"
     posicaoY = 32;
     posicaoX = 56;
     matriz[posicaoY][posicaoX] = "&";
@@ -123,12 +122,42 @@ function teleportar() {
   }
   else if (posicaoY == 31 && posicaoX == 31){
     matriz[18][60] = "&";
+    matriz[31][31] = "<"
     posicaoY = 18;
     posicaoX = 60;
     matriz[posicaoY][posicaoX] = "&";
     teleportandoBack = true;
     atualizaTabela();
     console.log("baiacu")
+  }
+  else if (posicaoY == 30 && posicaoX == 31){
+    matriz[27][47] = "&";
+    matriz[30][31] = "<"
+    posicaoY = 27;
+    posicaoX = 47;
+    matriz[posicaoY][posicaoX] = "&";
+    teleportandoBack = true;
+    atualizaTabela();
+    console.log("baiacu")
+  }
+  else if (posicaoY == 29 && posicaoX == 31){
+    matriz[1][60] = "&";
+    matriz[29][31] = "<"
+    posicaoY = 1;
+    posicaoX = 60;
+    matriz[posicaoY][posicaoX] = "&";
+    teleportandoBack = true;
+    atualizaTabela();
+    console.log("baiacu")
+  }
+  else if (posicaoY == 1 && posicaoX == 56){
+    matriz[59][2] = "&";
+    matriz[1][56] = "<"
+    posicaoY = 59;
+    posicaoX = 2;
+    matriz[posicaoY][posicaoX] = "&";
+    teleportandoBack = true;
+    atualizaTabela();
   }
   else{
     teleportarBack();
@@ -138,6 +167,7 @@ function teleportar() {
 function teleportarBack() {
     if (posicaoY == 37 && posicaoX == 1){
       matriz[20][30] = "&";
+      matriz[37][1] = "<";
       posicaoY = 20;
       posicaoX = 30;
       matriz[posicaoY][posicaoX] = "&";
@@ -146,23 +176,40 @@ function teleportarBack() {
     }
     else if (posicaoY == 32 && posicaoX == 56){
       matriz[31][29] = "&";
+      matriz[32][56] = "<";
       posicaoY = 31;
       posicaoX = 29;
       matriz[posicaoY][posicaoX] = "&";
       teleportandoBack = true;
       atualizaTabela();
-      console.log("baiacu")
     }
     else if (posicaoY == 18 && posicaoX == 60){
       matriz[31][31] = "&";
+      matriz[18][60] = "<";
       posicaoY = 31;
       posicaoX = 31;
       matriz[posicaoY][posicaoX] = "&";
       teleportandoBack = true;
       atualizaTabela();
-      console.log("baiacu")
     }
-    
+    else if (posicaoY == 1 && posicaoX == 60){
+      matriz[29][31] = "&";
+      matriz[1][60] = "<";
+      posicaoY = 29;
+      posicaoX = 31;
+      matriz[posicaoY][posicaoX] = "&";
+      teleportandoBack = true;
+      atualizaTabela();
+    }
+    else if (posicaoY == 59 && posicaoX == 2){
+      matriz[1][56] = "&";
+      matriz[59][2] = "<";
+      posicaoY = 1;
+      posicaoX = 56;
+      matriz[posicaoY][posicaoX] = "&";
+      teleportandoBack = true;
+      atualizaTabela();
+    }
     
 }
  
@@ -292,12 +339,12 @@ function atualizaTabela() {
         if((i != 60 || j != 1) && interagindoComAt){
           matriz[60][25] = "@";
         }
-        // if((i != 20 || j!= 30)){
-        //   matriz[20][30] = "<";
-        // }
-        // if((i != 37 || j!= 1)){
-        //   matriz[37][1] = "<";
-        // }
+        if((i != 1 || j!= 56)){
+           matriz[1][56] = "<";
+        }
+        if((i != 59 || j!= 2)){
+           matriz[59][2] = "<";
+        }
         if(i != 32 || j!= 56){
           matriz[32][56] = "<";
         }
@@ -309,6 +356,15 @@ function atualizaTabela() {
         }
         if(i != 18 || j!= 60){
           matriz[18][60] = "<";
+        }
+        if(i != 30 || j!= 31){
+          matriz[30][31] = "<";
+        }
+        if(i != 1 || j!= 60){
+          matriz[1][60] = "<";
+        }
+        if(i != 29 || j!= 31){
+          matriz[29][31] = "<";
         }
       } else {
         td.classList.remove("&");
@@ -334,7 +390,7 @@ function voltarMenu() {
 }
 
   function moverBoneco() {
-    if(vilaoPosX === 60 || vilaoPosX === 1) {
+    if(vilaoPosX === 60 || vilaoPosX === 20) {
       direcaoVilao *= -1;
     }
     vilaoPosX += direcaoVilao;
