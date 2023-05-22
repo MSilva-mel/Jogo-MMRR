@@ -96,6 +96,12 @@ document.addEventListener("keydown", function(event){
         interagindoComAt = false;
         atualizaTabela();
       }
+      if (posicaoY == 31 && posicaoX == 55) {
+      matriz[31][55] = "&";
+      matriz[1][11] = " ";
+      mostrandoO = false;
+      atualizaTabela();
+    }
       break;
   }
 });
@@ -290,6 +296,8 @@ function parede(x, y) {
 function espinho(x, y) {
   if (matriz[y][x] === "#" || matriz[y][x] === boneco) {
     matriz[posicaoY][posicaoX] = " ";
+    matriz[1][11] = "#"
+    matriz[31][55] = "O"
     posicaoX = 30;
     posicaoY = 30;
     matriz[posicaoY][posicaoX] = "&";
@@ -308,8 +316,8 @@ function espinho(x, y) {
 function bonecoMau(x, y){
   if (matriz[y][x] === boneco) {
     matriz[posicaoY][posicaoX] = " ";
-    //matriz[28][30] = "#";
-    //matriz[5][2] = "O";
+     matriz[1][11] = "#"
+    matriz[31][55] = "O"
     posicaoX = 30;
     posicaoY = 30;
     matriz[posicaoY][posicaoX] = "&";
