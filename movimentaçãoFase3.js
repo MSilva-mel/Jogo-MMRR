@@ -3,6 +3,7 @@ let cellId;
 let interagindoComAt = true;
 let teleportando = false;
 let teleportandoBack = false;
+let vidas = 3
 let posicaoAtual;
 let boneco = "$";
 let vilaoPosX = 1;
@@ -329,7 +330,7 @@ document.body.appendChild(botao);
 }
 
 function voltarMenu() {
-  window.location.href = "TelaDeGaveOver.html";
+  window.location.href = "TelaDeGameOver.html";
 }
 
   function moverBoneco() {
