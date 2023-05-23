@@ -441,6 +441,8 @@ function espinho(x, y) {
     matriz[posicaoY][posicaoX] = " ";
     matriz[1][11] = "#"
     matriz[31][55] = "O"
+    matriz[60][25] = "@"
+    matriz[1][0] = "D"
     posicaoX = 30;
     posicaoY = 30;
     matriz[posicaoY][posicaoX] = "&";
@@ -459,8 +461,10 @@ function espinho(x, y) {
 function bonecoMau(x, y){
   if (matriz[y][x] === boneco) {
     matriz[posicaoY][posicaoX] = " ";
-     matriz[1][11] = "#"
+    matriz[1][11] = "#"
     matriz[31][55] = "O"
+    matriz[60][25] = "@"
+    matriz[1][0] = "D"
     posicaoX = 30;
     posicaoY = 30;
     matriz[posicaoY][posicaoX] = "&";
