@@ -26,6 +26,8 @@ O jogo possui os seguintes elementos nas fases:
 
 & : Símbolo que representa o jogador.
 
+$ : Guarda Oswaldo (funciona como os espinhos, ao toca-lo perde uma vida).
+
 * : Símbolo que representa uma parede, o jogador ao se movimentar não pode passar pela parede.
 
 @ : Símbolo que representa a chave para abrir a porta para finalizar a fase, a porta abre no momento que o jogador interage com a chave.
