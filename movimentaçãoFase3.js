@@ -6,7 +6,7 @@ let teleportandoBack = false;
 let vidas = 3
 let posicaoAtual;
 let boneco = "$";
-let vilaoPosX = 1;
+let vilaoPosX = 21;
 let vilaoPosY = 17;
 let direcaoVilao = -1; // Indica a direção do movimento do vilão
 
@@ -165,6 +165,87 @@ function teleportar() {
     teleportandoBack = true;
     atualizaTabela();
   }
+  else if (posicaoY == 31 && posicaoX == 30){
+    matriz[46][1] = "&";
+    matriz[31][30] = "<"
+    posicaoY = 46;
+    posicaoX = 1;
+    matriz[posicaoY][posicaoX] = "&";
+    teleportandoBack = true;
+    atualizaTabela();
+  }
+  else if (posicaoY == 29 && posicaoX == 29){
+    matriz[59][5] = "&";
+    matriz[29][29] = "<"
+    posicaoY = 59;
+    posicaoX = 5;
+    matriz[posicaoY][posicaoX] = "&";
+    teleportandoBack = true;
+    atualizaTabela();
+  }
+  else if (posicaoY == 29 && posicaoX == 30){
+    matriz[44][60] = "&";
+    matriz[29][30] = "<"
+    posicaoY = 44;
+    posicaoX = 60;
+    matriz[posicaoY][posicaoX] = "&";
+    teleportandoBack = true;
+    atualizaTabela();
+  }
+  else if (posicaoY == 39 && posicaoX == 48){
+    matriz[37][1] = "&";
+    matriz[39][48] = "<"
+    posicaoY = 37;
+    posicaoX = 1;
+    matriz[posicaoY][posicaoX] = "&";
+    teleportandoBack = true;
+    atualizaTabela();
+  }
+  else if (posicaoY == 26 && posicaoX == 3){
+    matriz[60][60] = "&";
+    matriz[26][3] = "<"
+    posicaoY = 60;
+    posicaoX = 60;
+    matriz[posicaoY][posicaoX] = "&";
+    teleportandoBack = true;
+    atualizaTabela();
+  }
+  else if (posicaoY == 55 && posicaoX == 1){
+    matriz[1][53] = "&";
+    matriz[55][1] = "<"
+    posicaoY = 1;
+    posicaoX = 53;
+    matriz[posicaoY][posicaoX] = "&";
+    teleportandoBack = true;
+    atualizaTabela();
+  }
+  else if (posicaoY == 10 && posicaoX == 1){
+    matriz[1][23] = "&";
+    matriz[10][1] = "<"
+    posicaoY = 1;
+    posicaoX = 23;
+    matriz[posicaoY][posicaoX] = "&";
+    teleportandoBack = true;
+    atualizaTabela();
+  }
+  else if (posicaoY == 30 && posicaoX == 29){
+    matriz[57][60] = "&";
+    matriz[30][29] = "<"
+    posicaoY = 57;
+    posicaoX = 60;
+    matriz[posicaoY][posicaoX] = "&";
+    teleportandoBack = true;
+    atualizaTabela();
+  }
+  else if (posicaoY == 60 && posicaoX == 23){
+    matriz[30][29] = "&";
+    matriz[60][23] = "<"
+    posicaoY = 30;
+    posicaoX = 29;
+    matriz[posicaoY][posicaoX] = "&";
+    teleportandoBack = true;
+    atualizaTabela();
+  }
   else{
     teleportarBack();
   }
@@ -185,6 +266,15 @@ function teleportarBack() {
       matriz[32][56] = "<";
       posicaoY = 31;
       posicaoX = 29;
+      matriz[posicaoY][posicaoX] = "&";
+      teleportandoBack = true;
+      atualizaTabela();
+    }
+    else if (posicaoY == 1 && posicaoX == 53){
+      matriz[55][1] = "&";
+      matriz[1][53] = "<";
+      posicaoY = 55;
+      posicaoX = 1;
       matriz[posicaoY][posicaoX] = "&";
       teleportandoBack = true;
       atualizaTabela();
@@ -216,7 +306,60 @@ function teleportarBack() {
       teleportandoBack = true;
       atualizaTabela();
     }
-    
+    else if (posicaoY == 46 && posicaoX == 1){
+      matriz[31][30] = "&";
+      matriz[46][1] = "<";
+      posicaoY = 31;
+      posicaoX = 30;
+      matriz[posicaoY][posicaoX] = "&";
+      teleportandoBack = true;
+      atualizaTabela();
+    }
+    else if (posicaoY == 59 && posicaoX == 5){
+      matriz[29][29] = "&";
+      matriz[59][5] = "<";
+      posicaoY = 29;
+      posicaoX = 29;
+      matriz[posicaoY][posicaoX] = "&";
+      teleportandoBack = true;
+      atualizaTabela();
+    }
+    else if (posicaoY == 44 && posicaoX == 60){
+      matriz[29][30] = "&";
+      matriz[44][60] = "<";
+      posicaoY = 29;
+      posicaoX = 30;
+      matriz[posicaoY][posicaoX] = "&";
+      teleportandoBack = true;
+      atualizaTabela();
+    }
+    else if (posicaoY == 60 && posicaoX == 60){
+      matriz[26][3] = "&";
+      matriz[60][60] = "<";
+      posicaoY = 26;
+      posicaoX = 3;
+      matriz[posicaoY][posicaoX] = "&";
+      teleportandoBack = true;
+      atualizaTabela();
+    }
+    else if (posicaoY == 1 && posicaoX == 23){
+      matriz[10][1] = "&";
+      matriz[1][23] = "<";
+      posicaoY = 10;
+      posicaoX = 1;
+      matriz[posicaoY][posicaoX] = "&";
+      teleportandoBack = true;
+      atualizaTabela();
+    }
+    else if (posicaoY == 57 && posicaoX == 60){
+      matriz[30][29] = "&";
+      matriz[57][60] = "<";
+      posicaoY = 30;
+      posicaoX = 29;
+      matriz[posicaoY][posicaoX] = "&";
+      teleportandoBack = true;
+      atualizaTabela();
+    }
 }
  
 function esquerda() {
@@ -353,14 +496,29 @@ function atualizaTabela() {
         if((i != 59 || j!= 2)){
            matriz[59][2] = "<";
         }
+        if((i != 59 || j!= 5)){
+          matriz[59][5] = "<";
+       }
         if(i != 32 || j!= 56){
           matriz[32][56] = "<";
         }
         if(i != 31 || j!= 29){
           matriz[31][29] = "<";
         }
+        if(i != 29 || j!= 30){
+          matriz[29][30] = "<";
+        }
+        if(i != 39 || j!= 48){
+          matriz[39][48] = "<";
+        }
         if(i != 31 || j!= 31){
           matriz[31][31] = "<";
+        }
+        if(i != 29 || j!= 29){
+          matriz[29][29] = "<";
+        }
+        if(i != 44 || j!= 60){
+          matriz[44][60] = "<";
         }
         if(i != 18 || j!= 60){
           matriz[18][60] = "<";
@@ -368,11 +526,44 @@ function atualizaTabela() {
         if(i != 30 || j!= 31){
           matriz[30][31] = "<";
         }
+        if(i != 31 || j!= 30){
+          matriz[31][30] = "<";
+        }
         if(i != 1 || j!= 60){
           matriz[1][60] = "<";
         }
         if(i != 29 || j!= 31){
           matriz[29][31] = "<";
+        }
+        if(i != 46 || j!= 1){
+          matriz[46][1] = "<";
+        }
+        if(i != 26 || j!= 3){
+          matriz[26][3] = "<";
+        }
+        if(i != 60 || j!= 60){
+          matriz[60][60] = "<";
+        }
+        if(i != 1 || j!= 53){
+          matriz[1][53] = "<";
+        }
+        if(i != 55 || j!= 1){
+          matriz[55][1] = "<";
+        }
+        if(i != 10 || j!= 1){
+          matriz[10][1] = "<";
+        }
+        if(i != 1 || j!= 23){
+          matriz[1][23] = "<";
+        }
+        if(i != 57 || j!= 60){
+          matriz[57][60] = "<";
+        }
+        if(i != 30 || j!= 29){
+          matriz[30][29] = "<";
+        }
+        if(i != 60 || j!= 23){
+          matriz[60][23] = "<";
         }
       } else {
         td.classList.remove("&");
