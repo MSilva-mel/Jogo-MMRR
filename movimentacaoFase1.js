@@ -165,4 +165,3 @@ function fecharJanela(){
   window.close()
 }
 
-
