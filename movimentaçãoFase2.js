@@ -190,6 +190,8 @@ function espinho(x, y) {
     matriz[posicaoY][posicaoX] = " ";
     matriz[28][30] = "#"
     matriz[5][2] = "O"
+    matriz[30][30] = "@"
+    matriz[1][0] = "D"
     posicaoX = 1;
     posicaoY = 1;
     matriz[posicaoY][posicaoX] = "&";
@@ -209,6 +211,8 @@ function bonecoMau(x, y){
     matriz[posicaoY][posicaoX] = " ";
     matriz[28][30] = "#"
     matriz[5][2] = "O"
+    matriz[30][30] = "@"
+    matriz[1][0] = "D"
     posicaoX = 1;
     posicaoY = 1;
     matriz[posicaoY][posicaoX] = "&";
